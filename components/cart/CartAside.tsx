@@ -11,17 +11,17 @@ export default function CartAside() {
       {/* Overlay para móvil */}
       {isCartOpen && (
         <div 
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden backdrop-blur-sm"
+          className="fixed inset-0 bg-black/60 z-55 lg:hidden backdrop-blur-sm"
           onClick={closeCart}
         />
       )}
 
       {/* Aside con lógica de apertura */}
       <aside className={`
-        fixed inset-y-0 right-0 z-50 w-full max-w-sm bg-white shadow-2xl 
+        fixed inset-y-0 right-0 z-60 w-full max-w-sm bg-white shadow-2xl 
         transform transition-transform duration-300 ease-in-out
         ${isCartOpen ? 'translate-x-0' : 'translate-x-full'}
-        lg:static lg:translate-x-0 lg:w-96 lg:h-full lg:shadow-none lg:flex lg:flex-col
+        lg:z-0 lg:relative lg:translate-x-0 lg:w-96 lg:h-full lg:shadow-none lg:flex lg:flex-col
       `}>
         <div className="flex flex-col p-5 overflow-y-auto h-full">
           <div className="flex justify-between items-center lg:hidden mb-2">

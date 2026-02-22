@@ -24,7 +24,7 @@ export default function MobileMenu({ categories }: { categories: Category[] }) {
 
       {/* Menú Desplegable Móvil */}
       {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-gray-800 border-t border-gray-600 z-50 shadow-xl">
+        <div className="absolute top-17.5 left-0 w-full bg-gray-800 border-t border-gray-600 z-50 shadow-xl">
           <nav className="flex flex-col p-4">
             {categories.map(category => (
               <Link 

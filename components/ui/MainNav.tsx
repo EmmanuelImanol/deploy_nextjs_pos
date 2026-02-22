@@ -20,7 +20,9 @@ export default async function MainNav() {
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         
         {/* Lado Izquierdo: Menú Móvil (solo visible en sm/md) */}
-        <MobileMenu categories={categories} />
+        <div className="flex-1 md:hidden">
+          <MobileMenu categories={categories} />
+        </div>
 
         {/* Centro: Logo */}
         <div className="shrink-0">
@@ -28,25 +30,27 @@ export default async function MainNav() {
         </div>
 
         {/* Centro-Derecha: Navegación Desktop (Oculta en móvil) */}
-        <nav className="hidden md:flex gap-6 items-center">
-          {categories.map(category => (
-            <Link 
-              key={category.id}
-              href={`/${category.id}`}
-              className="text-white hover:text-green-400 font-bold transition-colors"
-            >
-              {category.name}
-            </Link>
-          ))}
+        <div className="flex-1 flex justify-end items-center gap-4">
+          <nav className="hidden md:flex gap-6 items-center">
+            {categories.map(category => (
+              <Link 
+                key={category.id}
+                href={`/${category.id}`}
+                className="text-white hover:text-green-400 font-bold transition-colors"
+              >
+                {category.name}
+              </Link>
+            ))}
 
-          <Link
-            href={'/admin/sales'}
-            className="rounded bg-green-400 font-bold py-2 px-5 text-white"
-          >Admin</Link>
-        </nav>
+            <Link
+              href={'/admin/sales'}
+              className="rounded bg-green-400 font-bold py-2 px-5 text-white"
+            >Admin</Link>
+          </nav>
+        </div>
 
         {/* Lado Derecho: Botón Carrito */}
-        <div className="flex items-center lg:hidden">
+        <div className="flex items-center lg:hidden relative z-50">
           <CartButton />
         </div>
       </div>
