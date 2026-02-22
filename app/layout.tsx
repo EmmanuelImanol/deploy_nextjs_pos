@@ -6,6 +6,7 @@ import "./globals.css";
 import "react-calendar/dist/Calendar.css"
 import Providers from "./providers";
 import CartAside from "@/components/cart/CartAside";
+import MainNav from "@/components/ui/MainNav";
 
 const outfit = Outfit({subsets:['latin']})
 
@@ -27,7 +28,6 @@ export default function RootLayout({
         <Providers>
           <CartProvider>
             <UIProvider>
-              <CartAside />
               {children}
             </UIProvider>
           </CartProvider>

@@ -1,43 +1,28 @@
 import MainNav from "@/components/ui/MainNav";
-import CartAside from "@/components/cart/CartAside";
 import ToastNotification from "@/components/ui/ToastNotification";
+import ShoppingCart from "@/components/cart/ShoppingCart";
+import CartAside from "@/components/cart/CartAside";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex flex-col h-screen overflow-hidden bg-slate-50 font-sans text-slate-900">
-      
-      {/* Header con Blur y Borde Sutil */}
-      <header className="shrink-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <MainNav />
-      </header>
-
-      <main className="flex flex-1 overflow-hidden">
-        
-        {/* Columna Principal: Área de Trabajo */}
-        <div className="flex-1 overflow-y-auto relative 
-             scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
-          
-          {/* Contenedor con padding responsivo y max-width para escritorio */}
-          <div className="max-w-400 mx-auto p-4 sm:p-6 lg:p-10 pb-32">
-            
-            {/* Animación de entrada suave */}
-            <div className="transition-opacity duration-500 ease-in">
-                {children}
-            </div>
-          </div>
+    <>
+      <MainNav />
+      <main className="lg:flex lg:h-screen lg:overflow-y-hidden">
+        {/* Contenido principal (Lista de productos) */}
+        <div className="lg:w-2/3 xl:w-3/4 2xl:w-4/5 lg:h-screen lg:overflow-y-auto p-4">
+          {children}
         </div>
 
-        {/* Aside del Carrito: Diseño Limpio y Minimalista */}
-        <aside className="hidden xl:flex w-100 shrink-0 bg-white border-l border-slate-200 shadow-[-4px_0_20px_rgba(0,0,0,0.02)] flex-col">
-           <div className="flex-1 overflow-y-auto scrollbar-none">
-                <CartAside />
-           </div>
+        {/* Carrito Lateral (Solo visible en Desktop >= 1024px) */}
+        <aside className="hidden lg:block lg:w-1/3 xl:w-1/4 2xl:w-1/5 bg-white border-l shadow-lg h-full overflow-y-auto">
+          <ShoppingCart />
         </aside>
-
       </main>
 
-      {/* Notificaciones */}
+      {/* El CartAside que ya tienes se encargará del móvil automáticamente */}
+      <CartAside /> 
+      
       <ToastNotification />
-    </div>
+    </>
   );
 }

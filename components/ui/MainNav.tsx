@@ -18,9 +18,9 @@ export default async function MainNav() {
   return (
     <header className="relative px-5 md:px-10 py-4 bg-gray-700 shadow-lg">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        
+
         {/* Lado Izquierdo: Menú Móvil (solo visible en sm/md) */}
-        <div className="flex-1 md:hidden">
+        <div className="md:hidden">
           <MobileMenu categories={categories} />
         </div>
 
@@ -29,28 +29,26 @@ export default async function MainNav() {
           <Logo />
         </div>
 
-        {/* Centro-Derecha: Navegación Desktop (Oculta en móvil) */}
-        <div className="flex-1 flex justify-end items-center gap-4">
-          <nav className="hidden md:flex gap-6 items-center">
-            {categories.map(category => (
-              <Link 
-                key={category.id}
-                href={`/${category.id}`}
-                className="text-white hover:text-green-400 font-bold transition-colors"
-              >
-                {category.name}
-              </Link>
-            ))}
-
+        {/* Centro-Derecha: Navegación Desktop */}
+        <nav className="hidden md:flex gap-6 items-center">
+          {categories.map(category => (
             <Link
-              href={'/admin/sales'}
-              className="rounded bg-green-400 font-bold py-2 px-5 text-white"
-            >Admin</Link>
-          </nav>
-        </div>
+              key={category.id}
+              href={`/${category.id}`}
+              className="text-white hover:text-green-400 font-bold transition-colors"
+            >
+              {category.name}
+            </Link>
+          ))}
 
-        {/* Lado Derecho: Botón Carrito */}
-        <div className="flex items-center lg:hidden relative z-50">
+          <Link
+            href={'/admin/sales'}
+            className="rounded bg-green-400 font-bold py-2 px-5 text-white"
+          >Admin</Link>
+        </nav>
+
+        {/* Lado Derecho: Botón Carrito (Solo móvil) */}
+        <div className="lg:hidden">
           <CartButton />
         </div>
       </div>
